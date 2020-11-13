@@ -1,0 +1,100 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans&family=Raleway:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap');
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+/* *,
+*::before,
+*::after {
+  box-sizing: content-box;
+} */
+
+.container {
+  max-width: 64rem;
+  margin: auto;
+}
+
+.header {
+  font-family: 'Bree Serif', Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+  .header img {
+    max-height: 3.75rem
+  }
+  .header-title {
+    padding: 0 0.625rem;
+  }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+  @media only screen and (max-width: 57.3125rem) {
+    .cards {
+      justify-content: space-evenly;
+    }
+  } 
+.card {
+  min-width: 18.75rem;
+  height: 20.3125rem;
+  flex: 0 0 30%;
+  padding: 1.875rem;
+  margin: 1.25rem 0;
+  box-sizing: border-box;
+  border-radius: 1.25rem;
+  background: #FFFFFF;
+  border: 0.125rem solid #74D680;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Raleway', Verdana, Geneva, Tahoma, sans-serif;
+}
+  .card img {
+    width: 3.125rem;
+  }
+  .card.not-flipped {
+    background: #E68A97;
+    border: 0.125em solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card.not-flipped > span {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3.125rem;
+    line-height: 4.25rem;
+    color: #FFFFFF;
+    font-family: 'Bree Serif', Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+
+.info-box-container {
+  display: flex;
+  align-items: start;
+}
+  .info-box-container a {
+    color: #fff
+  }
+.info-box-img {
+  padding-right: 0.9375rem;
+}
+.info-box-title {
+  font-weight: bold;
+  margin-bottom: 0.625rem;
+}
+.info-box {
+  background: #74D680;
+  border-radius: 1.25rem;
+  width: 100%;
+  color: #fff;
+  padding: 1.25rem;
+}
