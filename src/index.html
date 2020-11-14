@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="title" content="Advent Calendar supported with Deno">
-    <meta name="desciption" content="Advent Calendar supported with Deno">
+    <meta name="title" content="Christmas Quotes Advent Calendar powered by Deno">
+    <meta name="desciption" content="Christmas Quotes Advent Calendar powered by Deno">
     <meta name="keywords" content="deno, typescript, javascript, side-project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="title" content="Advent Calendar supported with Deno">
-    <meta property="og:title" content="Advent Calendar supported with Deno">
-    <meta property="og:desciption" content="Advent Calendar supported with Deno">
+    <meta name="title" content="Christmas Quotes Advent Calendar powered by Deno">
+    <meta property="og:title" content="Christmas Quotes Advent Calendar powered by Deno">
+    <meta property="og:desciption" content="Christmas Quotes Advent Calendar powered by Deno">
     <meta property="og:url" content="/">
-    <title>Advent Calendar supported with Deno</title>
+    <title>Christmas Quotes Advent Calendar powered by Deno</title>
     <link rel="stylesheet" href="app.css">
   </head>
   <body>
-   <div class="container">
+   <div id="app" class="container">
      <div class="header">
       <img src="images/christmas-tree.png" alt="Christmas Quotes Advent Calendar" />
-      <h2 class="header-title">Christmas Quotes Advent Calendar 2020</h2><span>powered by Deno</span>
+      <h2 class="header-title">Christmas Quotes Advent Calendar {{date}}</h2><span>powered by Deno</span>
      </div>
 
       <div class="info-box-container">
@@ -28,20 +28,16 @@
         </div>
       </div>
       
-      <div class="cards">
-        <div class="card">
-          <img src="images/winter-gloves.png" alt="gloves">
-          <p>Friends are like christmas lights.  Some are broke. Others just don’t work for you and there are others that make your day shine bright.</p>
-        </div>
-        <div class="card not-flipped"><span>2</span></div>
-        <div class="card not-flipped"><span>3</span></div>
-        <div class="card not-flipped"><span>4</span></div>
-        <div class="card not-flipped"><span>5</span></div>
-        <div class="card not-flipped"><span>6</span></div>
-        <div class="card not-flipped"><span>7</span></div>
+      <div class="waiting" v-if="!ready">
+        <img src="images/santa-claus.png" alt="santa - not yet december">
+        <p>It's not yet December!</p>
+      </div>
+      <div class="cards" v-if="ready">
+        <card v-for="card in cards" :card="card" :key="card.day">{{card.quote}}</card>
       </div>
     </div>
 
-    <script src="jquery.js"></script>
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

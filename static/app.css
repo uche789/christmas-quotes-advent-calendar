@@ -1,8 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans&family=Raleway:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:wght@300;400;600&family=Raleway:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap');
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif; 
+  font-weight: 300;
 }
 
 /* *,
@@ -60,14 +61,14 @@ body {
   .card img {
     width: 3.125rem;
   }
-  .card.not-flipped {
+  .card.is-seen {
     background: #E68A97;
     border: 0.125em solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .card.not-flipped > span {
+  .card.is-seen > span {
     font-style: normal;
     font-weight: bold;
     font-size: 3.125rem;
@@ -80,6 +81,7 @@ body {
 .info-box-container {
   display: flex;
   align-items: start;
+  margin: 1.875rem 0;
 }
   .info-box-container a {
     color: #fff
@@ -88,7 +90,7 @@ body {
   padding-right: 0.9375rem;
 }
 .info-box-title {
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0.625rem;
 }
 .info-box {
@@ -98,3 +100,12 @@ body {
   color: #fff;
   padding: 1.25rem;
 }
+
+.waiting {
+  text-align: center;
+  padding-top: 1.25rem;
+}
+  .waiting img {
+    width: 3.125rem;
+    padding: 0 0.625rem;
+  }

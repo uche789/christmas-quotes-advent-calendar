@@ -1,6 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { staticFileMiddleware } from './staticFileMiddleware.ts';
 import { parse } from 'https://deno.land/std/flags/mod.ts';
+import { Result } from "./interfaces.ts";
 
 const HOST_NAME = "0.0.0.0"
 const PORT = 8080
@@ -25,26 +26,52 @@ router.get('/', async ({ response }) => {
     }
 })
 
-router.get('/advent', async ({ response, params}) => {
+router.get('/cards', async ({ response, request, params }) => {
+  const hasFake = request.url.search.includes('fake=true')
   response.headers.set('Content-type', 'application/json')
-  try {
-    const text = await Deno.readTextFile("./src/quotes.json");
-    response.body = text
-  } catch {
-    response.status = 404
-    response.body = {error: 404, message: 'not found'}
+  let info = {
+    quotes: [] as string[],
+    icons: [] as string[],
   }
-})
 
-router.get('/icons', async ({ response }) => {
-  response.headers.set('Content-type', 'application/json')
   try {
-    const text = await Deno.readTextFile("./src/icons.json");
-    response.body = text
+    const response = await Deno.readTextFile("./src/icons.json");
+    info.icons = JSON.parse(response)
   } catch {
     response.status = 404
     response.body = {error: 404, message: 'not found'}
+    return
   }
+
+  try {
+    const response = await Deno.readTextFile("./src/quotes.json");
+    info.quotes = JSON.parse(response)
+  } catch {
+    response.status = 404
+    response.body = {error: 404, message: 'not found'}
+    return
+  }
+
+  const results: Result[] = []
+  const date = new Date()
+  const days = hasFake ? 28 : 31
+
+  if (date.getMonth() !== 11 && !hasFake) {
+    response.body = []
+    return
+  }
+
+  for (let i = 1; i <= days; i++) {
+    const result: Result = {
+      day: i,
+      icon: info.icons[i],
+      quote: info.quotes[i],
+      isSeen: date.getDate() >= i
+    }
+    results.push(result)
+  }
+
+  response.body = results
 })
 
 app.use(router.routes())
