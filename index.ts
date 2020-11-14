@@ -61,6 +61,10 @@ router.get('/cards', async ({ response, request, params }) => {
     return
   }
 
+  for (let i = 0; i < (info.quotes.length - info.icons.length); i++) {
+    info.icons.push(info.icons[i])
+  }
+
   for (let i = 1; i <= days; i++) {
     const result: Result = {
       day: i,
